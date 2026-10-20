@@ -1,0 +1,54 @@
+# Benchmark de exemplo: extrair dados de 10 decisões judiciais FICTÍCIAS.
+# Para usar com os seus documentos, copie esta pasta e troque `textos` pela saída do juris-pdf.
+
+textos: textos            # pasta com .txt (ex.: ../../juris-pdf/dados/saida)
+gabarito: gabarito.csv    # respostas corretas: coluna "id" = nome do .txt sem extensão
+
+modelos:                  # tags do Ollama (https://ollama.com/library); estes cabem numa GPU T4 do Colab
+  - qwen2.5:3b
+  - llama3.2:3b
+  - gemma3:4b
+  - qwen3:4b
+
+# Campos que o modelo deve devolver e como cada um é corrigido:
+#   texto | numero | data | sim_nao | lista | [opção1, opção2, ...]
+campos:
+  numero_processo: texto
+  tribunal: texto
+  tipo_documento: [sentenca, acordao, decisao_interlocutoria, despacho]
+  data_decisao: data
+  valor_causa: numero
+  autores: lista
+  reus: lista
+  resultado: [procedente, parcialmente_procedente, improcedente, extinto_sem_resolucao,
+              provido, parcialmente_provido, nao_provido, deferido, indeferido, nao_aplicavel]
+  magistrado: texto
+  area_direito: [civil, consumidor, trabalhista, previdenciario, tributario, familia, penal, administrativo]
+
+# O que o modelo lê. {texto} é substituído pelo documento.
+prompt: |
+  Extraia os dados da decisão judicial abaixo e responda em JSON.
+
+  O texto foi extraído de um PDF: ignore quebras de linha no meio das frases, URLs e rodapés repetidos do PJe.
+
+  - numero_processo: número CNJ (NNNNNNN-DD.AAAA.J.TR.OOOO).
+  - tribunal: sigla (TJSP, TJDFT, TRF3, TRT2...). Varas e juizados pertencem ao tribunal do seu estado/região.
+  - tipo_documento: sentenca (encerra o processo em 1º grau), acordao (julgamento colegiado),
+    decisao_interlocutoria (resolve questão no curso do processo, ex.: liminar) ou despacho (só dá andamento).
+  - data_decisao: data em que foi proferida ou assinada, no formato AAAA-MM-DD.
+  - valor_causa: valor da causa em reais (ex.: 15000.0); null se não constar. Não confunda com o valor da condenação.
+  - autores / reus: nomes das partes, sem "(AUTOR)" etc. Em recursos, autores = apelantes/recorrentes e
+    reus = apelados/recorridos. Na Justiça do Trabalho, reclamante = autor e reclamada = réu.
+  - resultado: sentenças -> procedente, parcialmente_procedente, improcedente ou extinto_sem_resolucao;
+    acórdãos -> provido, parcialmente_provido ou nao_provido; decisões interlocutórias -> deferido ou indeferido;
+    despachos -> nao_aplicavel.
+  - magistrado: nome do juiz ou relator, sem o cargo.
+  - area_direito: ramo do direito da causa. Use "consumidor" para relações com fornecedores
+    (bancos, telefonia, planos de saúde, companhias aéreas, construtoras, lojas).
+
+  DOCUMENTO:
+  {texto}
+
+opcoes:                   # opções do Ollama (opcional)
+  temperature: 0
+  num_ctx: 16384          # tamanho máximo em tokens; documentos longos (processos inteiros) podem precisar de mais

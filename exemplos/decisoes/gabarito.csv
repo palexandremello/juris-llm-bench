@@ -1,0 +1,11 @@
+id,numero_processo,tribunal,tipo_documento,data_decisao,valor_causa,autores,reus,resultado,magistrado,area_direito
+dec-001,1023456-78.2024.8.26.0100,TJSP,sentenca,2025-03-14,15000.00,Mariana Souza Teixeira,Banco Horizonte S.A.,parcialmente_procedente,Ricardo Menezes Falcão,consumidor
+dec-002,5004321-11.2023.8.13.0024,TJMG,acordao,2025-05-22,8500.00,Telefônica Aurora Ltda.,João Pedro Almeida Ribeiro,nao_provido,Helena Castro Vianna,consumidor
+dec-003,5002233-44.2025.4.03.6183,TRF3,decisao_interlocutoria,2025-06-03,72340.18,Antônio Carlos de Jesus,Instituto Nacional do Seguro Social - INSS,deferido,Luciana Prado Motta,previdenciario
+dec-004,5011122-33.2024.8.21.0010,TJRS,despacho,2025-07-09,,Condomínio Residencial Jardim das Acácias,Fernando Luís Bortolini,nao_aplicavel,Paulo Roberto Diehl,civil
+dec-005,1000987-65.2024.5.02.0045,TRT2,sentenca,2025-04-28,48900.00,Camila Rodrigues Nunes,Supermercados Boa Compra Ltda.,parcialmente_procedente,Marcelo Tavares Quintela,trabalhista
+dec-006,0012345-67.2023.8.16.0014,TJPR,sentenca,2025-02-10,120000.00,Roberto Kenji Sato; Elisa Martins Sato,Construtora Vale Verde Empreendimentos Ltda.,improcedente,André Luiz Carvalho Pinto,consumidor
+dec-007,5000456-12.2025.8.24.0167,TJSC,sentenca,2025-08-18,3200.00,Lucas Ferreira Domingues,Auto Peças Litoral Ltda ME,extinto_sem_resolucao,Beatriz Helena Zanini,consumidor
+dec-008,5009876-54.2022.4.04.7100,TRF4,acordao,2025-09-30,,Cooperativa Agrícola Serra Gaúcha,União - Fazenda Nacional; Agência Nacional de Transportes Terrestres - ANTT,parcialmente_provido,Otávio Reis Guimarães,tributario
+dec-009,8034567-21.2025.8.05.0001,TJBA,decisao_interlocutoria,2025-09-11,40000.00,Josefa Maria dos Santos,Saúde Plena Operadora de Planos Ltda.,indeferido,Cláudio Rocha Andrade,consumidor
+dec-010,0701234-56.2025.8.07.0016,TJDFT,sentenca,2025-08-07,10000.00,Thiago Barbosa Lima,Voar Linhas Aéreas S.A.,procedente,Gabriela Fonseca Moura,consumidor
