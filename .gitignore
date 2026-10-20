@@ -4,6 +4,4 @@ __pycache__/
 .venv
 .pytest_cache/
 **/resultados/*
-!exemplos/decisoes/resultados/resumo.csv
-!exemplos/decisoes/resultados/por_campo.csv
-!exemplos/decisoes/resultados/erros.csv
+!exemplos/decisoes/resultados/*

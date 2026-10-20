@@ -81,7 +81,7 @@ linha no gabarito são processados, mas não entram na nota.
 - `previsoes_<modelo>.csv`: o que o modelo respondeu, no formato do gabarito.
 - `<modelo>.jsonl`: respostas brutas.
 
-O exemplo já vem com `resumo.csv`, `por_campo.csv` e `erros.csv` de uma execução numa RTX 5060 Ti, para
+O exemplo já vem com os resultados de uma execução numa RTX 5060 Ti, para
 referência. No exemplo, o melhor foi o `qwen3:4b` (0,96 de acerto, ~1,8 s por documento).
 
 ## Com os seus documentos
