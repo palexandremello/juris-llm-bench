@@ -15,17 +15,11 @@ class OllamaClient:
             base_url = f"http://{base_url}"
         self._http = httpx.Client(base_url=base_url, timeout=timeout, transport=transport)
 
-    def close(self) -> None:
-        self._http.close()
-
-    def __enter__(self) -> OllamaClient:
-        return self
-
-    def __exit__(self, *exc) -> None:
-        self.close()
-
     def modelos(self) -> list[str]:
-        r = self._http.get("/api/tags")
+        try:
+            r = self._http.get("/api/tags")
+        except httpx.ConnectError:
+            raise SystemExit(f"Ollama não responde em {self._http.base_url}. Suba com: docker compose up -d") from None
         r.raise_for_status()
         return [m["name"] for m in r.json()["models"]]
 
@@ -44,8 +38,5 @@ class OllamaClient:
             "stream": False,
         }
         r = self._http.post("/api/chat", json=payload)
-        if r.status_code == 400 and "think" in r.text:  # versão/modelo que não aceita o parâmetro
-            del payload["think"]
-            r = self._http.post("/api/chat", json=payload)
         r.raise_for_status()
         return r.json()

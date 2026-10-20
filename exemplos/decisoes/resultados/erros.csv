@@ -1,0 +1,45 @@
+modelo,id,campo,nota,previsto,esperado
+qwen2.5:3b,dec-001,numero_processo,0.0,NNNNNNN-DD.2024.8.26.0100,1023456-78.2024.8.26.0100
+qwen2.5:3b,dec-002,numero_processo,0.0,NNNNNNN-22.2025.J.TR.15004321,5004321-11.2023.8.13.0024
+qwen2.5:3b,dec-002,valor_causa,0.0,,8500.0
+qwen2.5:3b,dec-002,autores,0.0,JOÃO PEDRO ALMEIDA RIBEIRO,Telefônica Aurora Ltda.
+qwen2.5:3b,dec-002,reus,0.0,TELEFÔNICA AURORA LTDA.,João Pedro Almeida Ribeiro
+qwen2.5:3b,dec-003,valor_causa,0.0,,72340.18
+qwen2.5:3b,dec-004,tribunal,0.0,3ª Vara Cível da Comarca de Caxias do Sul,TJRS
+qwen2.5:3b,dec-004,area_direito,0.0,,civil
+qwen2.5:3b,dec-005,numero_processo,0.0,NNNNNNN-28.2025.J.TR.1000987,1000987-65.2024.5.02.0045
+qwen2.5:3b,dec-006,numero_processo,0.0,NNNN2345-67.2023.8.16.0014,0012345-67.2023.8.16.0014
+qwen2.5:3b,dec-006,area_direito,0.0,civil,consumidor
+qwen2.5:3b,dec-007,numero_processo,0.0,NNNNNNN-DD.2025.8.24.0167,5000456-12.2025.8.24.0167
+qwen2.5:3b,dec-008,numero_processo,0.0,NNNNNNN-54.2022.4.04.7100/RS,5009876-54.2022.4.04.7100
+qwen2.5:3b,dec-008,autores,0.5,COOPERATIVA AGRÍCOLA SERRA GAÚCHA; UNIÃO - FAZENDA NACIONAL; AGÊNCIA NACIONAL DE TRANSPORTES TERRESTRES - ANTT,Cooperativa Agrícola Serra Gaúcha
+qwen2.5:3b,dec-008,magistrado,0.0,DESEMBARGADOR FEDERAL OTÁVIO REIS GUIMARÃES,Otávio Reis Guimarães
+qwen2.5:3b,dec-009,tribunal,0.0,10ª Vara de Relações de Consumo da Comarca de Salvador,TJBA
+qwen2.5:3b,dec-009,valor_causa,0.0,,40000.0
+qwen2.5:3b,dec-010,valor_causa,0.0,,10000.0
+llama3.2:3b,dec-001,valor_causa,0.0,5000.0,15000.0
+llama3.2:3b,dec-001,resultado,0.0,procedente,parcialmente_procedente
+llama3.2:3b,dec-002,tribunal,0.0,TJSP,TJMG
+llama3.2:3b,dec-002,resultado,0.0,provido,nao_provido
+llama3.2:3b,dec-003,tipo_documento,0.0,sentenca,decisao_interlocutoria
+llama3.2:3b,dec-003,resultado,0.0,procedente,deferido
+llama3.2:3b,dec-004,tribunal,0.0,TJSP,TJRS
+llama3.2:3b,dec-004,autores,0.6666666666666666,CONDOMÍNIO RESIDENCIAL JARDIM DAS ACÁCIAS; FERNANDO LUÍS BORTOLINI,Condomínio Residencial Jardim das Acácias
+llama3.2:3b,dec-004,area_direito,0.0,consumidor,civil
+llama3.2:3b,dec-005,tribunal,0.0,TRF3,TRT2
+llama3.2:3b,dec-005,resultado,0.0,procedente,parcialmente_procedente
+llama3.2:3b,dec-006,tribunal,0.0,TJSP,TJPR
+llama3.2:3b,dec-007,tribunal,0.0,TJSP,TJSC
+llama3.2:3b,dec-008,autores,0.5,COOPERATIVA AGRÍCOLA SERRA GAÚCHA; UNIÃO - FAZENDA NACIONAL; AGÊNCIA NACIONAL DE TRANSPORTES TERRESTRES - ANTT,Cooperativa Agrícola Serra Gaúcha
+llama3.2:3b,dec-008,magistrado,0.0,DESEMBARGADOR FEDERAL OTÁVIO REIS GUIMARÃES,Otávio Reis Guimarães
+llama3.2:3b,dec-009,tribunal,0.0,TJSP,TJBA
+gemma3:4b,dec-002,valor_causa,0.0,,8500.0
+gemma3:4b,dec-004,tipo_documento,0.0,decisao_interlocutoria,despacho
+gemma3:4b,dec-004,resultado,0.0,deferido,nao_aplicavel
+gemma3:4b,dec-004,area_direito,0.0,,civil
+gemma3:4b,dec-005,resultado,0.0,procedente,parcialmente_procedente
+gemma3:4b,dec-009,tribunal,0.0,BAHIA,TJBA
+qwen3:4b,dec-002,resultado,0.0,improcedente,nao_provido
+qwen3:4b,dec-005,numero_processo,0.0,ATOrd 1000987-65.2024.5.02.0045,1000987-65.2024.5.02.0045
+qwen3:4b,dec-005,resultado,0.0,procedente,parcialmente_procedente
+qwen3:4b,dec-008,magistrado,0.0,DESEMBARGADOR FEDERAL OTÁVIO REIS GUIMARÃES,Otávio Reis Guimarães

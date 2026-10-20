@@ -3,4 +3,7 @@ __pycache__/
 *.egg-info
 .venv
 .pytest_cache/
-resultados/
+**/resultados/*
+!exemplos/decisoes/resultados/resumo.csv
+!exemplos/decisoes/resultados/por_campo.csv
+!exemplos/decisoes/resultados/erros.csv

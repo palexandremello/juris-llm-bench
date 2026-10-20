@@ -16,8 +16,7 @@ def main() -> None:
 
     cfg = carregar_config(a.config)
     if not a.so_avaliar:
-        with OllamaClient() as cliente:
-            rodar(cfg, cliente)
+        rodar(cfg)
     r = avaliar(cfg)
     print("\n" + r["resumo"].to_string(index=False, float_format="%.2f"))
     print("\nAcerto por campo:\n" + r["por_campo"].to_string(float_format="%.2f"))

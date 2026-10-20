@@ -21,15 +21,38 @@ Um benchmark é uma pasta com três coisas (veja [`exemplos/decisoes`](exemplos/
 ## Uso
 
 ```bash
-ollama serve &
+docker compose up -d                                                # sobe o Ollama em localhost:11434
 uv sync
 uv run juris-llm-bench exemplos/decisoes/config.yaml               # roda os modelos e mostra as notas
 uv run juris-llm-bench exemplos/decisoes/config.yaml --so-avaliar  # só recalcula (ex.: depois de corrigir o gabarito)
-uv run pytest -q                                                    # testes (Ollama simulado, sem GPU)
+uv run pytest -q                                                    # testes (Ollama simulado, sem Docker nem GPU)
 ```
 
-No Google Colab (GPU grátis), use [`notebooks/colab.ipynb`](notebooks/colab.ipynb). O código também funciona
-em qualquer máquina com GPU e Ollama. Para usar um servidor remoto, defina `OLLAMA_HOST=http://servidor:11434`.
+Os modelos do `config.yaml` são baixados na primeira execução (~2-3 GB cada) e ficam guardados no volume
+`ollama` do Docker. `docker compose down` para o Ollama sem apagar os modelos.
+
+### GPU no Docker
+
+O `docker-compose.yml` usa a GPU NVIDIA. Se o `docker compose up` der
+`could not select device driver "nvidia"`, falta instalar o
+[NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+(uma vez só, Ubuntu):
+
+```bash
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+curl -fsSL https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+sudo nvidia-ctk runtime configure --runtime=docker && sudo systemctl restart docker
+```
+
+Para conferir: `docker compose exec ollama nvidia-smi`. Sem GPU NVIDIA, apague o bloco `deploy:` do
+`docker-compose.yml`: funciona na CPU, só que bem mais devagar.
+
+### Sem Docker
+
+No Google Colab (GPU grátis), use [`notebooks/colab.ipynb`](notebooks/colab.ipynb). Em outra máquina, instale o
+[Ollama](https://ollama.com/download) e rode `ollama serve`. Para usar um servidor remoto, defina
+`OLLAMA_HOST=http://servidor:11434`.
 
 Se o processo for interrompido, rode de novo: os documentos já respondidos são pulados.
 
@@ -57,6 +80,9 @@ linha no gabarito são processados, mas não entram na nota.
 - `erros.csv`: cada campo errado, com previsto × esperado.
 - `previsoes_<modelo>.csv`: o que o modelo respondeu, no formato do gabarito.
 - `<modelo>.jsonl`: respostas brutas.
+
+O exemplo já vem com `resumo.csv`, `por_campo.csv` e `erros.csv` de uma execução numa RTX 5060 Ti, para
+referência. No exemplo, o melhor foi o `qwen3:4b` (0,96 de acerto, ~1,8 s por documento).
 
 ## Com os seus documentos
 

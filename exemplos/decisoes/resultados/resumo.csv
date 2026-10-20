@@ -1,0 +1,5 @@
+modelo,acerto,documentos,json_valido,segundos_por_doc
+qwen3:4b,0.96,10,1.0,1.83
+gemma3:4b,0.94,10,1.0,2.18
+llama3.2:3b,0.8516666666666667,10,1.0,1.0550000000000002
+qwen2.5:3b,0.825,10,1.0,1.23

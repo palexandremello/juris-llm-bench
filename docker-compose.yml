@@ -1,0 +1,21 @@
+# Sobe o Ollama em http://localhost:11434. Os modelos baixados ficam no volume "ollama".
+#   docker compose up -d
+# Sem GPU NVIDIA (ou sem o nvidia-container-toolkit), apague o bloco "deploy": roda na CPU, bem mais devagar.
+services:
+  ollama:
+    image: ollama/ollama:0.40.6   # versão fixa: resultados comparáveis entre execuções
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  ollama:
